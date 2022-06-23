@@ -16,12 +16,12 @@ stages{
 			echo "Deploying.........."
 		}
 	}
-}
-post{
-	always{
-		echo "Jenkinsfile run successfully........."
-	}
-	failure{
-		echo "Jenkinsfile failed....."
+	post{
+		always{
+			echo "Jenkinsfile run successfully........."
+		}
+		failure{
+			echo "Jenkinsfile failed....."
+		}
 	}
 }
