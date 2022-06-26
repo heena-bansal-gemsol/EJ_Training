@@ -1,21 +1,25 @@
-pipeline
-agent any
-stages{
-	stage('Build'){
-		steps{
-			echo "Building.............."
-		}
-	}
-	stage('Test'){
-		steps{
-			echo "Testing..........."
-		}
-	}
-	stage('Deploy'){
-		steps{
-			echo "Deploying.........."
-		}
-	}
+pipeline {
+    agent any
+
+    stages {
+        stage('Connecting with GitHub') {
+            steps {
+                git branch: 'main', credentialsId: '64325d53-febd-4a54-a137-e7f06b24c2d6', url: 'https://github.com/heena-bansal-gemsol/EJ_Training.git'
+                echo "Successfully Connected with git"
+            }
+        }
+        stage('Building Docker Image') {
+            steps{
+                bat '''cd Heena/DockerUseCase2/
+                    docker build -t heenagemini/heena:sampleApache1 .'''
+            }
+        }
+        stage('Pushing Docker Image') {
+            steps{
+                bat "docker push heenagemini/heena:sampleApache1"
+            }
+        }
+    }
 	post{
 		always{
 			echo "Jenkinsfile run successfully........."
@@ -25,3 +29,4 @@ stages{
 		}
 	}
 }
+
