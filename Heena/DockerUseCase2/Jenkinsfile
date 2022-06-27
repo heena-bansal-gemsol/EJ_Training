@@ -19,9 +19,19 @@ pipeline {
                 bat "docker push heenagemini/heena:sampleApache1"
             }
         }*/
+	stage('Stopping existing container') {
+            steps{
+                bat "docker stop sampleApache_container"
+            }
+        }
+	stage('Removing container') {
+            steps{
+                bat "docker rm sampleApache_container"
+            }
+        }
 	stage('Run the image in container') {
             steps{
-                bat "docker run -p 85:80 -d heenagemini/heena:myapache"
+                bat "docker run -p 85:80 -d --name sampleApache_container heenagemini/heena:myapache"
             }
         }
     }
