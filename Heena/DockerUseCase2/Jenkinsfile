@@ -14,11 +14,11 @@ pipeline {
                     docker build -t heenagemini/heena:sampleApache1 .'''
             }
         }
-        stage('Pushing Docker Image') {
+        /*stage('Pushing Docker Image') {
             steps{
                 bat "docker push heenagemini/heena:sampleApache1"
             }
-        }
+        }*/
 	stage('Run the image in container') {
             steps{
                 bat "docker run -p 85:80 -d heenagemini/heena:myapache"
