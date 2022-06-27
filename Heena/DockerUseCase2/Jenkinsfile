@@ -31,7 +31,7 @@ pipeline {
         }
 	stage('Going to sleep (For checking downtime)') {
             steps{
-                bat "timeout/t 60"
+                bat "timeout 60"
             }
         }
 	stage('Run the image in container') {
