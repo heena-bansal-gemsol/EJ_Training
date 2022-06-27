@@ -21,7 +21,7 @@ pipeline {
         }
 	stage('Run the image in container') {
             steps{
-                bat "docker run -p 85:80 heenagemini/heena:sampleApache1"
+                bat "docker run -p 85:80 -d heenagemini/heena:myapache"
             }
         }
     }
