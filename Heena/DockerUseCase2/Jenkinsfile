@@ -29,6 +29,11 @@ pipeline {
                 bat "docker rm sampleApache_container"
             }
         }
+	stage('Going to sleep (For checking downtime)') {
+            steps{
+                bat "sleep 60"
+            }
+        }
 	stage('Run the image in container') {
             steps{
                 bat "docker run -p 85:80 -d --name sampleApache_container heenagemini/heena:myapache"
