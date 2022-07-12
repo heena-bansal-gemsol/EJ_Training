@@ -1,6 +1,6 @@
 node {
   tools{
-    maven apache-maven-3.8.5
+    maven "apache-maven-3.8.5"
   }
   stage('SCM') {
     checkout scm
