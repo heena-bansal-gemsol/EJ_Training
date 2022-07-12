@@ -1,11 +1,15 @@
 node {
+  tools{
+    maven apache-maven-3.8.5
+  }
   stage('SCM') {
     checkout scm
   }
   stage('SonarQube Analysis') {
-    def mvn = tool 'apache-maven-3.8.5';
+    //def mvn = tool 'apache-maven-3.8.5';
     withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonarqube1"
+      // sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonarqube1"
+      sh "mvn clean verify sonar:sonar -Dsonar.projectKey=sonarqube1"
     }
   }
 }
